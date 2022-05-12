@@ -1,0 +1,162 @@
+/* font-family: 'Recursive', sans-serif;
+    font-family: 'Righteous', cursive;
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+.frontPageRoot {
+    background-color: #FB6B6B;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.frontPageContainer {
+    background-color: #FB6B6B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto 0;
+}
+
+.frontPageContainer > img {
+    width: 136px;
+    height: 161px;
+    margin-bottom: 30px;
+}
+
+.frontPageContainer > div {
+    font-family: 'Righteous';
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.frontPageContainer > button {
+    font-family: 'Recursive';
+    color: #D70900;
+    font-size: 18px;
+    background-color: #FFFFFF;
+    width: 254px;
+    height: 54px;
+    border: 1px solid #D70900;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+}
+
+.frontPageContainer > button:hover {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+.principalPageRoot {
+    position: relative;
+    background-color: #FB6B6B;
+    height: 100%;
+}
+
+
+
+
+.topRoot {
+    background-color: #FB6B6B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.topContainer {
+    background-color: #FB6B6B;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 42px 0;
+}
+
+.topContainer > div {
+    font-family: 'Righteous';
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 36px;
+}
+
+.topContainer > img {
+    width: 52px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+
+
+
+
+.contentRoot {
+    background-color: #FB6B6B;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contentContainer {
+    background-color: #FB6B6B;
+}
+
+.contentCard {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 65px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 20px 0;
+}
+
+.contentCard > div {
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.contentCard > ion-icon {
+    font-size: 30px;
+}
+
+
+
+
+
+
+
+
+.bottomRoot {
+    background-color: #FFFFFF;
+    width: 100%;
+}
+
+.bottomContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.bottomContainer > div {
+    font-family: 'Recursive';
+    font-weight: 400;
+    font-size: 18px;
+    margin: 24px 0;
+}

@@ -1,11 +1,11 @@
 
 
-export default function Bottom() {
+export default function Bottom(props) {
     return (
         <>
             <div className="bottomRoot">
                 <div className="bottomContainer">
-                    <div>0/4 CONCLUÍDOS</div>
+                    <div>{props.numAnswers}/{props.deckLength} CONCLUÍDOS</div>
                 </div>
             </div>
         </>

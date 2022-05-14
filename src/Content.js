@@ -3,14 +3,14 @@ import Cards from './Cards';
 
 
 
-export default function Content() {
+export default function Content(props) {
 
     
     return (
         <>
             <div className="contentRoot">
                 <div className="contentContainer">
-                    <Cards />
+                    <Cards deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers}/>
                 </div>
             </div>
         </>

@@ -1,43 +1,32 @@
 import React from "react";
 
 
-export default function Cards() {
+export default function Cards(props) {
 
-    const deckReact =
-        [{qn: "O que é JSX?", answ:"Uma extensão de linguagem do JavaScript"}, 
-        {qn: "O React é ______", answ:"uma biblioteca JavaScript para construção de interfaces"}, 
-        {qn: "Componentes devem iniciar com ______.", answ:"letra maiúscula"}, 
-        {qn: "Podemos colocar ______ dentro do JSX.", answ:"expressões"}, 
-        {qn: "O ReactDOM nos ajuda ______", answ:"interagindo com a DOM para colocar componentes React na mesma"}, 
-        {qn: "Usamos o npm para ______", answ:"gerenciar os pacotes necessários e suas dependências"}, 
-        {qn: "Usamos props para ______", answ:"passar diferentes informações para componentes"}, 
-        {qn: "Usamos estado (state) para ______", answ:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
-    ];
-
-    function comparador() { 
-        return Math.random() - 0.5; 
-    }
-
-    deckReact.sort(comparador);
     
 
     function Card (props) {
         
-        const [showCard, SetShowCard] = React.useState("card");
         
+        function changeState (numQuestion, deckShuffle, SetDeckShuffle) {
+
+            const newArr = [... deckShuffle];
+            newArr[numQuestion].state = "showQuestion";
+            SetDeckShuffle(newArr);
+        }
         
-        switch (showCard) {
+        switch (props.state) {
             case "card":
-                return  <div className="contentCard" onClick={() => SetShowCard("showQuestion")}>
+                return  <div className="contentCard" onClick={() => changeState(props.numQuestion, props.deckShuffle, props.SetDeckShuffle)}>
                             <div>Pergunta {props.numQuestion + 1}</div>
                             <ion-icon name="play-outline"></ion-icon>
                         </div>
 
             case "showQuestion":
-                return  <QuestionCard question={props.question} function={SetShowCard}/>
+                return  <QuestionCard question={props.question} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} />
 
             case "showAnswer":
-                return  <AnswerCard answ={props.answer} function={SetShowCard}/>
+                return  <AnswerCard answ={props.answer} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers}/>
 
             case "showAnswerNotRemember":
                 return  <div className="answerNotRemember">
@@ -62,26 +51,69 @@ export default function Cards() {
 
 
     function QuestionCard (props) {
+
+        function changeState (numQuestion, deckShuffle, SetDeckShuffle) {
+            
+            const newArr = [... deckShuffle];
+            newArr[numQuestion].state = "showAnswer";
+            SetDeckShuffle(newArr);
+        }
+
         return (
-            <div className="questionCard" onClick={() => props.function("showAnswer")}>
+            <div className="questionCard" onClick={() => changeState(props.numQuestion, props.deckShuffle, props.SetDeckShuffle)}>
                 <div>{props.question}</div>
                 <ion-icon name="repeat-outline"></ion-icon>
             </div>
         )
     }
 
+
+
     function AnswerCard (props) {
+        
+        
+        function changeStateNotRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers) {
+            
+            const newArr = [... deckShuffle];
+            newArr[numQuestion].state = "showAnswerNotRemember";
+            SetDeckShuffle(newArr);
+
+            const num = numAnswers;
+            SetNumAnswers(num + 1);
+        }
+
+        function changeStateAlmost (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers) {
+            
+            const newArr = [... deckShuffle];
+            newArr[numQuestion].state = "showAnswerAlmost";
+            SetDeckShuffle(newArr);
+
+            const num = numAnswers;
+            SetNumAnswers(num + 1);
+        }
+
+        function changeStateRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers) {
+            
+            const newArr = [... deckShuffle];
+            newArr[numQuestion].state = "showAnswerRemember";
+            SetDeckShuffle(newArr);
+
+            const num = numAnswers;
+            SetNumAnswers(num + 1);
+        }
+        
+        
         return (
             <div className="answerCard">
                 <div className="answerText">{props.answ}</div>
                 <div className="answerContainer">
-                    <div className="notRememberOption" onClick={() => props.function("showAnswerNotRemember")}> 
+                    <div className="notRememberOption" onClick={() => changeStateNotRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers)}> 
                         <div>Não lembrei</div>
                     </div>
-                    <div className="almostOption" onClick={() => props.function("showAnswerAlmost")}>
+                    <div className="almostOption" onClick={() => changeStateAlmost(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers)}>
                         <div>Quase não lembrei</div>
                     </div>
-                    <div className="rememberOption" onClick={() => props.function("showAnswerRemember")}>
+                    <div className="rememberOption" onClick={() => changeStateRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers)}>
                         <div>Zap!</div>
                     </div>
                 </div>
@@ -94,7 +126,7 @@ export default function Cards() {
 
     return (
         <>
-            {deckReact.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ}/>)}
+            {props.deckShuffle.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ} state={question.state} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers}/>)}
         </>
     )
 

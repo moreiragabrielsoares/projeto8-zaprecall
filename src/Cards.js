@@ -3,8 +3,8 @@ import React from "react";
 
 export default function Cards() {
 
-    const [deckReact, SetdeckReact] = React.useState([
-        {qn: "O que é JSX?", answ:"Uma extensão de linguagem do JavaScript"}, 
+    const deckReact =
+        [{qn: "O que é JSX?", answ:"Uma extensão de linguagem do JavaScript"}, 
         {qn: "O React é ______", answ:"uma biblioteca JavaScript para construção de interfaces"}, 
         {qn: "Componentes devem iniciar com ______.", answ:"letra maiúscula"}, 
         {qn: "Podemos colocar ______ dentro do JSX.", answ:"expressões"}, 
@@ -12,13 +12,18 @@ export default function Cards() {
         {qn: "Usamos o npm para ______", answ:"gerenciar os pacotes necessários e suas dependências"}, 
         {qn: "Usamos props para ______", answ:"passar diferentes informações para componentes"}, 
         {qn: "Usamos estado (state) para ______", answ:"dizer para o React quais informações quando atualizadas devem renderizar a tela novamente"}
-    ]);
+    ];
 
+    function comparador() { 
+        return Math.random() - 0.5; 
+    }
+
+    deckReact.sort(comparador);
+    
 
     function Card (props) {
         
         const [showCard, SetShowCard] = React.useState("card");
-        console.log(showCard);
         
         
         switch (showCard) {

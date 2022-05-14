@@ -14,6 +14,8 @@ export default function PrincipalPage(props) {
 
     const [numAnswers, SetNumAnswers] = React.useState(0);
 
+    const [numAnswersNotRemember, SetNumAnswersNotRemember] = React.useState(0);
+
     const [iconsBottom, SetIconsBottom] = React.useState([]);
     
     
@@ -21,8 +23,8 @@ export default function PrincipalPage(props) {
         <>
             <div className="principalPageRoot">
                 <Top />
-                <Content deckShuffle={deckShuffle} SetDeckShuffle={SetDeckShuffle} numAnswers={numAnswers} SetNumAnswers={SetNumAnswers} iconsBottom={iconsBottom} SetIconsBottom={SetIconsBottom}/>
-                <Bottom deckLength={deckLength} numAnswers={numAnswers} iconsBottom={iconsBottom}/>
+                <Content deckShuffle={deckShuffle} SetDeckShuffle={SetDeckShuffle} numAnswers={numAnswers} SetNumAnswers={SetNumAnswers} iconsBottom={iconsBottom} SetIconsBottom={SetIconsBottom} numAnswersNotRemember={numAnswersNotRemember} SetNumAnswersNotRemember={SetNumAnswersNotRemember}/>
+                <Bottom deckLength={deckLength} numAnswers={numAnswers} iconsBottom={iconsBottom} numAnswersNotRemember={numAnswersNotRemember}/>
             </div>
         </>
     )

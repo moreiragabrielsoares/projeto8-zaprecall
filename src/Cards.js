@@ -26,7 +26,7 @@ export default function Cards(props) {
                 return  <QuestionCard question={props.question} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} />
 
             case "showAnswer":
-                return  <AnswerCard answ={props.answer} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} iconsBottom={props.iconsBottom} SetIconsBottom={props.SetIconsBottom}/>
+                return  <AnswerCard answ={props.answer} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} iconsBottom={props.iconsBottom} SetIconsBottom={props.SetIconsBottom} numAnswersNotRemember={props.numAnswersNotRemember} SetNumAnswersNotRemember={props.SetNumAnswersNotRemember}/>
 
             case "showAnswerNotRemember":
                 return  <div className="answerNotRemember">
@@ -72,7 +72,7 @@ export default function Cards(props) {
     function AnswerCard (props) {
         
         
-        function changeStateNotRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers, iconsBottom, SetIconsBottom) {
+        function changeStateNotRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers, iconsBottom, SetIconsBottom, numAnswersNotRemember, SetNumAnswersNotRemember) {
             
             const newArr = [... deckShuffle];
             newArr[numQuestion].state = "showAnswerNotRemember";
@@ -84,6 +84,9 @@ export default function Cards(props) {
             const newArrIcons = [... iconsBottom];
             newArrIcons.push({classIcon:"iconAnswerNotRemember", typeIcon:"close-circle"});
             SetIconsBottom(newArrIcons);
+
+            const aux = numAnswersNotRemember;
+            SetNumAnswersNotRemember(aux + 1);
         }
 
         function changeStateAlmost (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers, iconsBottom, SetIconsBottom) {
@@ -119,7 +122,7 @@ export default function Cards(props) {
             <div className="answerCard">
                 <div className="answerText">{props.answ}</div>
                 <div className="answerContainer">
-                    <div className="notRememberOption" onClick={() => changeStateNotRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers, props.iconsBottom, props.SetIconsBottom)}> 
+                    <div className="notRememberOption" onClick={() => changeStateNotRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers, props.iconsBottom, props.SetIconsBottom, props.numAnswersNotRemember, props.SetNumAnswersNotRemember)}> 
                         <div>Não lembrei</div>
                     </div>
                     <div className="almostOption" onClick={() => changeStateAlmost(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers, props.iconsBottom, props.SetIconsBottom)}>
@@ -138,7 +141,7 @@ export default function Cards(props) {
 
     return (
         <>
-            {props.deckShuffle.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ} state={question.state} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} iconsBottom={props.iconsBottom} SetIconsBottom={props.SetIconsBottom}/>)}
+            {props.deckShuffle.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ} state={question.state} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} iconsBottom={props.iconsBottom} SetIconsBottom={props.SetIconsBottom} numAnswersNotRemember={props.numAnswersNotRemember} SetNumAnswersNotRemember={props.SetNumAnswersNotRemember}/>)}
         </>
     )
 

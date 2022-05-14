@@ -7,7 +7,7 @@ import FrontPage from './FrontPage';
 
 export default function App() {
     
-    const [showPage, SetShowPage] = React.useState("frontpag");
+    const [showPage, SetShowPage] = React.useState("frontpage");
     
     return (
         <>

@@ -149,7 +149,7 @@
     position: relative;
     box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
-    padding: 10px;
+    padding: 20px 10px 10px 15px;
     margin: 20px 0;
 }
 
@@ -168,6 +168,140 @@
 
 
 
+
+
+.answerCard {
+    background-color: #FFFFD4;
+    min-height: 131px;
+    width: 299px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    padding: 20px 15px 10px 15px;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.answerText {
+    font-family: 'Recursive';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.answerContainer {
+    display:flex;
+    justify-content: space-between;
+}
+
+.answerContainer > div {
+    font-family: 'Recursive';
+    font-weight: 400;
+    font-size: 12px;
+    color: #FFFFFF;
+    width: 85px;
+    height: 37px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.answerContainer > span {
+    text-align: justify;
+}
+
+.notRememberOption {
+    background-color: #FF3030;
+}
+
+.almostOption {
+    background-color: #FF922E;
+}
+
+.rememberOption {
+    background-color: #2FBE34;
+}
+
+
+
+
+.answerNotRemember {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 65px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 20px 0;
+}
+
+.answerNotRemember > div {
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: line-through;
+    color: #FF3030;
+}
+
+.answerNotRemember > ion-icon {
+    color: #FF3030;
+}
+
+.answerAlmost {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 65px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 20px 0;
+}
+
+.answerAlmost > div {
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: line-through;
+    color: #FF922E;
+}
+
+.answerAlmost > ion-icon {
+    color: #FF922E;
+}
+
+.answerRemember {
+    background-color: #FFFFFF;
+    width: 300px;
+    height: 65px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 20px 0;
+}
+
+.answerRemember > div {
+    font-family: 'Recursive';
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration-line: line-through;
+    color: #2FBE34;
+}
+
+.answerRemember > ion-icon {
+    color: #2FBE34;
+}
 
 
 

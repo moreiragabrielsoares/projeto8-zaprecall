@@ -18,33 +18,78 @@ export default function Cards() {
     function Card (props) {
         
         const [showCard, SetShowCard] = React.useState("card");
+        console.log(showCard);
         
-        return (
-            <>
-            { showCard === "card" ?
-                <div className="contentCard" onClick={() => SetShowCard("question")}>
-                    <div>Pergunta {props.numQuestion + 1}</div>
-                    <ion-icon name="play-outline"></ion-icon>
-                </div> :
-                <QuestionCard question={props.question}/>
-            }
-            </>
-        )
+        
+        switch (showCard) {
+            case "card":
+                return  <div className="contentCard" onClick={() => SetShowCard("showQuestion")}>
+                            <div>Pergunta {props.numQuestion + 1}</div>
+                            <ion-icon name="play-outline"></ion-icon>
+                        </div>
+
+            case "showQuestion":
+                return  <QuestionCard question={props.question} function={SetShowCard}/>
+
+            case "showAnswer":
+                return  <AnswerCard answ={props.answer} function={SetShowCard}/>
+
+            case "showAnswerNotRemember":
+                return  <div className="answerNotRemember">
+                            <div>Pergunta {props.numQuestion + 1}</div>
+                            <ion-icon name="close-circle"></ion-icon>
+                        </div>
+            
+            case "showAnswerAlmost":
+                return  <div className="answerAlmost">
+                            <div>Pergunta {props.numQuestion + 1}</div>
+                            <ion-icon name="help-circle"></ion-icon>
+                        </div>
+
+            case "showAnswerRemember":
+                return  <div className="answerRemember">
+                            <div>Pergunta {props.numQuestion + 1}</div>
+                            <ion-icon name="checkmark-circle"></ion-icon>
+                        </div>
+        }  
+
     }
 
 
     function QuestionCard (props) {
         return (
-            <div className="questionCard">
+            <div className="questionCard" onClick={() => props.function("showAnswer")}>
                 <div>{props.question}</div>
                 <ion-icon name="repeat-outline"></ion-icon>
             </div>
         )
     }
 
+    function AnswerCard (props) {
+        return (
+            <div className="answerCard">
+                <div className="answerText">{props.answ}</div>
+                <div className="answerContainer">
+                    <div className="notRememberOption" onClick={() => props.function("showAnswerNotRemember")}> 
+                        <div>Não lembrei</div>
+                    </div>
+                    <div className="almostOption" onClick={() => props.function("showAnswerAlmost")}>
+                        <div>Quase não lembrei</div>
+                    </div>
+                    <div className="rememberOption" onClick={() => props.function("showAnswerRemember")}>
+                        <div>Zap!</div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+
+
+
     return (
         <>
-            {deckReact.map((question , index) => <Card numQuestion={index} question={question.qn}/>)}
+            {deckReact.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ}/>)}
         </>
     )
 

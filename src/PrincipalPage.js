@@ -13,14 +13,16 @@ export default function PrincipalPage(props) {
     const deckLength = props.deckReact.length;
 
     const [numAnswers, SetNumAnswers] = React.useState(0);
+
+    const [iconsBottom, SetIconsBottom] = React.useState([]);
     
     
     return (
         <>
             <div className="principalPageRoot">
                 <Top />
-                <Content deckShuffle={deckShuffle} SetDeckShuffle={SetDeckShuffle} numAnswers={numAnswers} SetNumAnswers={SetNumAnswers}/>
-                <Bottom deckLength={deckLength} numAnswers={numAnswers}/>
+                <Content deckShuffle={deckShuffle} SetDeckShuffle={SetDeckShuffle} numAnswers={numAnswers} SetNumAnswers={SetNumAnswers} iconsBottom={iconsBottom} SetIconsBottom={SetIconsBottom}/>
+                <Bottom deckLength={deckLength} numAnswers={numAnswers} iconsBottom={iconsBottom}/>
             </div>
         </>
     )

@@ -5,7 +5,10 @@ export default function Bottom(props) {
         <>
             <div className="bottomRoot">
                 <div className="bottomContainer">
-                    <div>{props.numAnswers}/{props.deckLength} CONCLUÍDOS</div>
+                    <div className="result">{props.numAnswers}/{props.deckLength} CONCLUÍDOS</div>
+                    <div className="iconContainer">
+                        {props.iconsBottom.map((icon) => <div className={icon.classIcon}> <ion-icon name={icon.typeIcon}></ion-icon> </div>)}
+                    </div>
                 </div>
             </div>
         </>

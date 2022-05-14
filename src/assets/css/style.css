@@ -251,6 +251,7 @@
 
 .answerNotRemember > ion-icon {
     color: #FF3030;
+    font-size: 23px;
 }
 
 .answerAlmost {
@@ -276,6 +277,7 @@
 
 .answerAlmost > ion-icon {
     color: #FF922E;
+    font-size: 23px;
 }
 
 .answerRemember {
@@ -301,6 +303,7 @@
 
 .answerRemember > ion-icon {
     color: #2FBE34;
+    font-size: 23px;
 }
 
 
@@ -315,13 +318,36 @@
 
 .bottomContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
+    height: 70px;
 }
 
-.bottomContainer > div {
+.result {
     font-family: 'Recursive';
     font-weight: 400;
     font-size: 18px;
-    margin: 24px 0;
+    margin: 10px 0;
+}
+
+.iconContainer {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+
+.iconAnswerRemember > ion-icon {
+    color: #2FBE34;
+    font-size: 23px;
+}
+
+.iconAnswerAlmost > ion-icon {
+    color: #FF922E;
+    font-size: 23px;
+}
+
+.iconAnswerNotRemember > ion-icon {
+    color: #FF3030;
+    font-size: 23px;
 }

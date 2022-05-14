@@ -23,10 +23,10 @@ export default function Cards(props) {
                         </div>
 
             case "showQuestion":
-                return  <QuestionCard question={props.question} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} />
+                return  <QuestionCard question={props.question} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} />
 
             case "showAnswer":
-                return  <AnswerCard answ={props.answer} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers}/>
+                return  <AnswerCard answ={props.answer} numQuestion={props.numQuestion} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} iconsBottom={props.iconsBottom} SetIconsBottom={props.SetIconsBottom}/>
 
             case "showAnswerNotRemember":
                 return  <div className="answerNotRemember">
@@ -72,7 +72,7 @@ export default function Cards(props) {
     function AnswerCard (props) {
         
         
-        function changeStateNotRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers) {
+        function changeStateNotRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers, iconsBottom, SetIconsBottom) {
             
             const newArr = [... deckShuffle];
             newArr[numQuestion].state = "showAnswerNotRemember";
@@ -80,9 +80,13 @@ export default function Cards(props) {
 
             const num = numAnswers;
             SetNumAnswers(num + 1);
+
+            const newArrIcons = [... iconsBottom];
+            newArrIcons.push({classIcon:"iconAnswerNotRemember", typeIcon:"close-circle"});
+            SetIconsBottom(newArrIcons);
         }
 
-        function changeStateAlmost (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers) {
+        function changeStateAlmost (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers, iconsBottom, SetIconsBottom) {
             
             const newArr = [... deckShuffle];
             newArr[numQuestion].state = "showAnswerAlmost";
@@ -90,9 +94,13 @@ export default function Cards(props) {
 
             const num = numAnswers;
             SetNumAnswers(num + 1);
+
+            const newArrIcons = [... iconsBottom];
+            newArrIcons.push({classIcon:"iconAnswerAlmost", typeIcon:"help-circle"});
+            SetIconsBottom(newArrIcons);
         }
 
-        function changeStateRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers) {
+        function changeStateRemember (numQuestion, deckShuffle, SetDeckShuffle, numAnswers, SetNumAnswers, iconsBottom, SetIconsBottom) {
             
             const newArr = [... deckShuffle];
             newArr[numQuestion].state = "showAnswerRemember";
@@ -100,6 +108,10 @@ export default function Cards(props) {
 
             const num = numAnswers;
             SetNumAnswers(num + 1);
+
+            const newArrIcons = [... iconsBottom];
+            newArrIcons.push({classIcon:"iconAnswerRemember", typeIcon:"checkmark-circle"});
+            SetIconsBottom(newArrIcons);
         }
         
         
@@ -107,13 +119,13 @@ export default function Cards(props) {
             <div className="answerCard">
                 <div className="answerText">{props.answ}</div>
                 <div className="answerContainer">
-                    <div className="notRememberOption" onClick={() => changeStateNotRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers)}> 
+                    <div className="notRememberOption" onClick={() => changeStateNotRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers, props.iconsBottom, props.SetIconsBottom)}> 
                         <div>Não lembrei</div>
                     </div>
-                    <div className="almostOption" onClick={() => changeStateAlmost(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers)}>
+                    <div className="almostOption" onClick={() => changeStateAlmost(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers, props.iconsBottom, props.SetIconsBottom)}>
                         <div>Quase não lembrei</div>
                     </div>
-                    <div className="rememberOption" onClick={() => changeStateRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers)}>
+                    <div className="rememberOption" onClick={() => changeStateRemember(props.numQuestion, props.deckShuffle, props.SetDeckShuffle, props.numAnswers, props.SetNumAnswers, props.iconsBottom, props.SetIconsBottom)}>
                         <div>Zap!</div>
                     </div>
                 </div>
@@ -126,7 +138,7 @@ export default function Cards(props) {
 
     return (
         <>
-            {props.deckShuffle.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ} state={question.state} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers}/>)}
+            {props.deckShuffle.map((question , index) => <Card numQuestion={index} question={question.qn} answer={question.answ} state={question.state} deckShuffle={props.deckShuffle} SetDeckShuffle={props.SetDeckShuffle} numAnswers={props.numAnswers} SetNumAnswers={props.SetNumAnswers} iconsBottom={props.iconsBottom} SetIconsBottom={props.SetIconsBottom}/>)}
         </>
     )
 

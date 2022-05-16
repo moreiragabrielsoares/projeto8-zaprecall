@@ -131,6 +131,10 @@
     margin: 20px 0;
 }
 
+.contentCard:hover {
+    cursor: pointer;
+}
+
 .contentCard > div {
     font-family: 'Recursive';
     font-weight: 700;
@@ -151,6 +155,10 @@
     border-radius: 5px;
     padding: 20px 10px 10px 15px;
     margin: 20px 0;
+}
+
+.questionCard:hover {
+    cursor: pointer;
 }
 
 .questionCard > div {
@@ -217,12 +225,24 @@
     background-color: #FF3030;
 }
 
+.notRememberOption:hover {
+    cursor: pointer;
+}
+
 .almostOption {
     background-color: #FF922E;
 }
 
+.almostOption {
+    cursor: pointer;
+}
+
 .rememberOption {
     background-color: #2FBE34;
+}
+
+.rememberOption {
+    cursor: pointer;
 }
 
 
